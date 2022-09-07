@@ -25,6 +25,7 @@ public class Tiles : MonoBehaviour {
             tiles.Add(Instantiate(b,b.transform.position+new Vector3(i,0,j),b.transform.rotation)as GameObject);
             tiles[i].name="Cubo"+(j)+","+(i);
             tiles[i].tag="Tile";
+            tiles[i].isStatic= true;
             terreno.Add(tiles[i]);
              }
              matriz.Add(tiles);
