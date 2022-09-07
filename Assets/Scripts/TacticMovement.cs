@@ -35,7 +35,7 @@ public class TacticMovement : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position,Vector3.down,out hit,2f))
         {    
-
+      
             if (hit.collider.gameObject.tag.Equals("Tile"))
             {
               
