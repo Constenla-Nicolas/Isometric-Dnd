@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class TacticMovement : MonoBehaviour
 {    public int distanciaMax =6;
      private NavMeshAgent agent;
-    public bool moving=false;
+    public bool moving=false,actual;
     public int distancia;
     Tiles current,prevcurrent,targetedbymouse;
     public GameObject p;
@@ -23,7 +23,8 @@ public class TacticMovement : MonoBehaviour
     }
 
     private void Update() {
-          if(!moving){
+      if(actual){
+            if(!moving){
         checkMouse();
      }
      else{
@@ -61,6 +62,7 @@ public class TacticMovement : MonoBehaviour
             }
         }
         
+      }
           
     }
    
@@ -164,6 +166,9 @@ public class TacticMovement : MonoBehaviour
             
             moving=false;
         }
+    }
+    public NavMeshAgent GetAgent(){
+        return agent;
     }
 
 }
