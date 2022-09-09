@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EntityManager : MonoBehaviour
 {   
-List<GameObject> players= new List<GameObject>();
+public List<GameObject> players= new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {   players.AddRange(GameObject.FindGameObjectsWithTag("Player"));
@@ -40,7 +40,7 @@ List<GameObject> players= new List<GameObject>();
         { Debug.Log(item.GetComponent<P>());
             
         }
-        players[0].GetComponent<P>().actual=true;
+        players[0].GetComponent<TacticMovement>().actual=true;
     }
     void entityMovement(){
     

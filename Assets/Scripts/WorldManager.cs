@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P : MonoBehaviour
-{   public int iniciativa;
-    public bool ismoving,actionAvailable=true,bonusActionAvailable=true;
+public class WorldManager : MonoBehaviour
+{
     // Start is called before the first frame update
     void Start()
     {
