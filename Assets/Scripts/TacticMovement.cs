@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class TacticMovement : MonoBehaviour
-{    public int distanciaMax =6;
+{    public int distanciaMax =7;
      private NavMeshAgent agent;
-    public bool moving=false;
+    public bool moving=false,actual;
     public int distancia;
     Tiles current,prevcurrent,targetedbymouse;
     public GameObject p;
@@ -23,12 +23,11 @@ public class TacticMovement : MonoBehaviour
     }
 
     private void Update() {
-          if(!moving){
+      if(actual){
+            if(!moving){
         checkMouse();
      }
-     else{
-        caminar();
-     }
+    
     
           prevcurrent=current;
      
@@ -43,11 +42,12 @@ public class TacticMovement : MonoBehaviour
                 current =hit.transform.gameObject.GetComponent<Tiles>();
                 current.actual=true;
                  
-            // Debug.DrawRay(transform.position,Vector3.down * 10,Color.green);
+          
                
          
             if (current!=prevcurrent)
-            {   erasePrevious();
+            {  
+                 erasePrevious();
                 prevcurrent.Reset();
                 Debug.Log("difiere");
                 
@@ -61,11 +61,16 @@ public class TacticMovement : MonoBehaviour
             }
         }
         
+      }
+       else{
+        current.distancia=0;
+     }
           
     }
    
 
-    void findSelectableTiles(){
+    public void findSelectableTiles(){
+        
         Queue<Tiles> proceso = new Queue<Tiles>();
         proceso.Enqueue(current);
         seleccionables.Add(current);
@@ -106,7 +111,8 @@ public class TacticMovement : MonoBehaviour
    public void erasePrevious(){
         
         foreach (Tiles a in seleccionables)
-        {   if (!a.actual)
+        {  
+             if (!a.actual)
         {
             a.distancia=0;
         }
@@ -122,7 +128,7 @@ public class TacticMovement : MonoBehaviour
     // Vector3 pos = t.transform.position;
     // pos.y = this.transform.position.y;
     agent.SetDestination(t.transform.position);
-
+    
     }
        private void checkMouse(){
         // si se suelta el boton de la izquierda del mouse(boton 0)
@@ -156,14 +162,9 @@ public class TacticMovement : MonoBehaviour
 
         }
     }
-    protected void caminar(){
-        if (path.Count>0){
-
-        }
-        else{
-            
-            moving=false;
-        }
+    
+    public NavMeshAgent GetAgent(){
+        return agent;
     }
 
 }

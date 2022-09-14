@@ -43,7 +43,7 @@ public class Tiles : MonoBehaviour {
         Vector3 halfextents = new Vector3(.5f,.5f,.5f); //+new Vector3(1,0,1)
      Collider[]colliders = Physics.OverlapBox(transform.position,halfextents );
      foreach (Collider item in colliders)
-     { Debug.Log("collider "+item);
+     {  
         Tiles t = item.GetComponent<Tiles>();
         if (t.name!=this.name&&(t.transform.position.x/transform.position.x==1||t.transform.position.z/transform.position.z==1))
         {   
