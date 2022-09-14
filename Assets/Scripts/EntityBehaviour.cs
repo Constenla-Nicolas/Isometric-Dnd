@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P : MonoBehaviour
+public class EntityBehaviour : MonoBehaviour
 {   public int iniciativa;
     public bool ismoving,actionAvailable=true,bonusActionAvailable=true;
     // Start is called before the first frame update

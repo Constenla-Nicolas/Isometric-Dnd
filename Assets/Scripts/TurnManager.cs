@@ -19,7 +19,7 @@ public class TurnManager : MonoBehaviour{
     {
       if (aux==0)
       {  
-        playerlist = GameObject.Find("terreno").GetComponent<EntityManager>().players;
+        playerlist = GameObject.Find("terreno").GetComponent<EntityManager>().entities;
         Debug.Log("entidades encontradas "+ playerlist.Count);
         fillQ();
         entidadActual= turnQ.Peek();
@@ -31,13 +31,13 @@ public class TurnManager : MonoBehaviour{
 
 
 
-      if (!entidadActual.GetComponent<P>().ismoving&&!entidadActual.GetComponent<P>().actionAvailable&&!entidadActual.GetComponent<P>().bonusActionAvailable)
+      if (!entidadActual.GetComponent<EntityBehaviour>().ismoving&&!entidadActual.GetComponent<EntityBehaviour>().actionAvailable&&!entidadActual.GetComponent<EntityBehaviour>().bonusActionAvailable)
     { 
       if (turnQ.Count==0)
       {
         for (int i = 0; i < playerlist.Count; i++)
-        { playerlist[i].GetComponent<P>().actionAvailable=true;
-       playerlist[i].GetComponent<P>().bonusActionAvailable=true;
+        { playerlist[i].GetComponent<EntityBehaviour>().actionAvailable=true;
+       playerlist[i].GetComponent<EntityBehaviour>().bonusActionAvailable=true;
         // playerlist[i].GetComponent<TacticMovement>().setDistancia(GameObject.Find("terreno").GetComponent<EntityManager>().players[i].GetComponent<TacticMovement>().getDistanciaMax());
         }
         foreach (GameObject item in playerlist)
@@ -65,7 +65,7 @@ public class TurnManager : MonoBehaviour{
 
   public void mostrarActual(){
     Debug.Log("La actual era "+entidadActual.name);
-    entidadActual.GetComponent<P>().actionAvailable=false;
-    entidadActual.GetComponent<P>().bonusActionAvailable=false;
+    entidadActual.GetComponent<EntityBehaviour>().actionAvailable=false;
+    entidadActual.GetComponent<EntityBehaviour>().bonusActionAvailable=false;
   }
 }
