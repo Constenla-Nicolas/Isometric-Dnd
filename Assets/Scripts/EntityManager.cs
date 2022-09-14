@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityManager : MonoBehaviour
+<<<<<<< Updated upstream
 {   
 public List<GameObject> players= new List<GameObject>();
     // Start is called before the first frame update
@@ -14,6 +15,13 @@ public List<GameObject> players= new List<GameObject>();
          players[2].GetComponent<P>().iniciativa=8;
 
         ordenarPorIniciativa();
+=======
+{
+    List<GameObject> entities;
+    void Start()
+    {
+        setUpEntities();
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -21,6 +29,7 @@ public List<GameObject> players= new List<GameObject>();
     {
         
     }
+<<<<<<< Updated upstream
     void ordenarPorIniciativa(){
         for (int i = 0; i < players.Count; i++)
         {
@@ -49,4 +58,31 @@ public List<GameObject> players= new List<GameObject>();
 
         return players;
     }
+=======
+
+
+    void setUpEntities(){
+        entities= new List<GameObject>();
+        entities.AddRange(GameObject.FindGameObjectsWithTag("Entity"));
+        entities[0].GetComponent<EntityBehaviour>().iniciativa=15;
+        entities[1].GetComponent<EntityBehaviour>().iniciativa=7;
+        entities[2].GetComponent<EntityBehaviour>().iniciativa=12;
+        List<GameObject> orderedList =entities ;
+        orderedList.Sort(
+            delegate(GameObject p1, GameObject p2)
+            {
+                return p1.GetComponent<EntityBehaviour>().iniciativa.CompareTo(p2.GetComponent<EntityBehaviour>().iniciativa);
+            }
+        );
+
+       orderedList.Reverse();
+       entities=orderedList;
+      
+      
+
+    }
+    public List<GameObject> getEntities(){
+        return entities;
+    }  
+>>>>>>> Stashed changes
 }

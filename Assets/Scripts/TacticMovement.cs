@@ -4,15 +4,22 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class TacticMovement : MonoBehaviour
+<<<<<<< Updated upstream
 {    public int distanciaMax =7;
      private NavMeshAgent agent;
     public bool moving=false,actual;
+=======
+{    
+     private NavMeshAgent agent;
+    public bool moving=false, actual;
+>>>>>>> Stashed changes
     public int distancia;
     Tiles current,prevcurrent,targetedbymouse;
-    public GameObject p;
+    
      private Tiles aux;
     Stack<Tiles>path=new Stack<Tiles>();
-     protected List<  Tiles> seleccionables ;
+     protected List<Tiles> seleccionables ;
+    
     // Start is called before the first frame update
     protected void Start(){
        agent=GetComponent<NavMeshAgent>();
@@ -23,11 +30,18 @@ public class TacticMovement : MonoBehaviour
     }
 
     private void Update() {
+<<<<<<< Updated upstream
       if(actual){
             if(!moving){
         checkMouse();
      }
     
+=======
+          if(actual){
+        checkMouse();
+     
+  
+>>>>>>> Stashed changes
     
           prevcurrent=current;
      
@@ -53,24 +67,32 @@ public class TacticMovement : MonoBehaviour
                 
                
                 prevcurrent.actual=false;
-                distancia= distanciaMax-1;
+                // distancia= distanciaMax-1;
                  findSelectableTiles();
             }
            
            
             }
         }
+<<<<<<< Updated upstream
         
       }
        else{
         current.distancia=0;
      }
+=======
+    }
+>>>>>>> Stashed changes
           
     }
    
 
+<<<<<<< Updated upstream
     public void findSelectableTiles(){
         
+=======
+  public  void findSelectableTiles(){
+>>>>>>> Stashed changes
         Queue<Tiles> proceso = new Queue<Tiles>();
         proceso.Enqueue(current);
         seleccionables.Add(current);

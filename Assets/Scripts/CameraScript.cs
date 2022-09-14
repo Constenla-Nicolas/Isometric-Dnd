@@ -24,6 +24,11 @@ public class CameraScript : MonoBehaviour
     try
     {
          hit.transform.GetComponent<Tiles>().targetedbymouse=true;
+         current = hit.transform.GetComponent<Tiles>();
+           if (prevcurrent!=current)
+        {
+        prevcurrent.targetedbymouse=false;    
+        }
     }
     catch (System.NullReferenceException)
     {
@@ -31,11 +36,8 @@ public class CameraScript : MonoBehaviour
          
     }
        
-        current = hit.transform.GetComponent<Tiles>();
-        if (prevcurrent!=current)
-        {prevcurrent.targetedbymouse=false;
-            
-        }
+        
+      
        }
 
 
