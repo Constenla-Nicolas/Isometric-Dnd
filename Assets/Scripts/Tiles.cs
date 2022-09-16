@@ -41,7 +41,10 @@ public class Tiles : MonoBehaviour {
    public void findnegihbors(){
         adyacentes.Clear();
         Vector3 halfextents = new Vector3(.5f,.5f,.5f); //+new Vector3(1,0,1)
-     Collider[]colliders = Physics.OverlapBox(transform.position,halfextents );
+     
+     try
+     {
+         Collider[]colliders = Physics.OverlapBox(transform.position,halfextents );
      foreach (Collider item in colliders)
      {  
         Tiles t = item.GetComponent<Tiles>();
@@ -50,6 +53,13 @@ public class Tiles : MonoBehaviour {
             adyacentes.Add(t);
         }
      }
+     }
+     catch (System.NullReferenceException)
+     {
+        
+         
+     }
+    
      
     }
  

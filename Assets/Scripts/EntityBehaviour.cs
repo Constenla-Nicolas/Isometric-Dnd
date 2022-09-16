@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EntityBehaviour : MonoBehaviour
 {   public int iniciativa;
-    public bool ismoving,actionAvailable=true,bonusActionAvailable=true;
+    public bool ismoving,actionAvailable,bonusActionAvailable;
     // Start is called before the first frame update
     void Start()
-    {
+    {actionAvailable=true;
+     bonusActionAvailable=true;
         
     }
 

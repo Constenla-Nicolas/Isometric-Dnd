@@ -22,22 +22,17 @@ public List<GameObject> entities= new List<GameObject>();
         
     }
     void ordenarPorIniciativa(){
-        for (int i = 0; i < entities.Count; i++)
-        {
-            for (int j = i; j < entities.Count-1; j++)
-            {
-               if (entities[i].GetComponent<EntityBehaviour>().iniciativa<entities[j].GetComponent<EntityBehaviour>().iniciativa)
-               {
-                GameObject aux = entities[i];
-                entities.RemoveAt(i);
-                entities.Insert(i,entities[j]);
-                entities.RemoveAt(j);
-                entities.Insert(j,aux);
-               }
-            }
-        }
+       List<GameObject> orderedList = entities;
+    orderedList.Sort(
+    delegate(GameObject p1,GameObject p2)
+    {
+        return p1.GetComponent<EntityBehaviour>().iniciativa.CompareTo(p2.GetComponent<EntityBehaviour>().iniciativa);
+    }
+);  
+    orderedList.Reverse();
+    entities=orderedList;
         foreach (GameObject item in entities)
-        { Debug.Log("foud entity"+item.GetComponent<EntityBehaviour>());
+        { Debug.Log("found entity"+item.GetComponent<EntityBehaviour>());
             
         }
         entities[0].GetComponent<TacticMovement>().actual=true;

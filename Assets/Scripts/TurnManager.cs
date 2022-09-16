@@ -8,7 +8,13 @@ public class TurnManager : MonoBehaviour{
     List<GameObject> playerlist;
     Queue<GameObject> turnQ = new Queue<GameObject>();
      void Start()
-    {
+    {  playerlist = GameObject.Find("terreno").GetComponent<EntityManager>().entities;
+        Debug.Log("entidades encontradas "+ playerlist.Count);
+        fillQ();
+        entidadActual= turnQ.Dequeue();
+        entidadActual.GetComponent<TacticMovement>().actual=true;
+        Debug.Log("turnmanager start "+entidadActual);
+        aux=1;
      
    
     }
@@ -17,22 +23,13 @@ public class TurnManager : MonoBehaviour{
 
     void Update()
     {
-      if (aux==0)
-      {  
-        playerlist = GameObject.Find("terreno").GetComponent<EntityManager>().entities;
-        Debug.Log("entidades encontradas "+ playerlist.Count);
-        fillQ();
-        entidadActual= turnQ.Peek();
-        entidadActual.GetComponent<TacticMovement>().actual=true;
-        Debug.Log("turnmanager start "+entidadActual);
-        aux=1;
-      }
+   
 
 
 
 
       if (!entidadActual.GetComponent<EntityBehaviour>().ismoving&&!entidadActual.GetComponent<EntityBehaviour>().actionAvailable&&!entidadActual.GetComponent<EntityBehaviour>().bonusActionAvailable)
-    { 
+    { Debug.Log("la actual es "+entidadActual.name);
       if (turnQ.Count==0)
       {
         for (int i = 0; i < playerlist.Count; i++)
@@ -45,11 +42,13 @@ public class TurnManager : MonoBehaviour{
           turnQ.Enqueue(item);
         }
       }
-      
+      Debug.Log("con actionavailable y bonus action en "+entidadActual.GetComponent<EntityBehaviour>().actionAvailable +", "+ entidadActual.GetComponent<EntityBehaviour>().bonusActionAvailable);
       entidadActual.GetComponent<TacticMovement>().actual=false;
       entidadActual.GetComponent<TacticMovement>().erasePrevious();
       entidadActual = turnQ.Dequeue();
-      
+      Debug.Log("y ahora la actual es"+entidadActual.name);
+      Debug.Log("con actionavailable y bonus action en "+entidadActual.GetComponent<EntityBehaviour>().actionAvailable +", "+ entidadActual.GetComponent<EntityBehaviour>().bonusActionAvailable);
+
       entidadActual.GetComponent<TacticMovement>().actual=true;
        entidadActual.GetComponent<TacticMovement>().erasePrevious();
       entidadActual.GetComponent<TacticMovement>().findSelectableTiles();
@@ -64,7 +63,7 @@ public class TurnManager : MonoBehaviour{
     }
 
   public void mostrarActual(){
-    Debug.Log("La actual era "+entidadActual.name);
+ 
     entidadActual.GetComponent<EntityBehaviour>().actionAvailable=false;
     entidadActual.GetComponent<EntityBehaviour>().bonusActionAvailable=false;
   }
