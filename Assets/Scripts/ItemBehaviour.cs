@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemBehaviour : Interactable
 {
-    // Start is called before the first frame update
+    public ScriptableItem item;
     public override void interact()
     {
         base.interact();
@@ -12,7 +12,12 @@ public class ItemBehaviour : Interactable
     }
 
     public void pickUp(){
-        Debug.Log("objetoAgarrado");
-        Destroy(gameObject);
+        Debug.Log("objetoAgarrado "+item.name);
+        bool wasPickedUp = TurnManager.instance.entidadActual.GetComponent<Inventory>().Add(item);
+        if (wasPickedUp)
+        {
+         Destroy(gameObject);     
+        }
+       
     }
 }

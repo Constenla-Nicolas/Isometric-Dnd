@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour{
     // Start is called before the first frame update
+    public static TurnManager instance;
+     private void Awake() {
+     if (instance !=null)
+     {
+      Debug.LogWarning("more than 1 turn manager at the time!");
+     } 
+     instance=this;
+    }
   public  GameObject entidadActual;
     List<GameObject> playerlist;
     Queue<GameObject> turnQ = new Queue<GameObject>();
      void Start()
-    {  playerlist = GameObject.Find("terreno").GetComponent<EntityManager>().entities;
+    {  playerlist =EntityManager.instance.entities;
         Debug.Log("entidades encontradas "+ playerlist.Count);
         fillQ();
         entidadActual= turnQ.Dequeue();

@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class EntityManager : MonoBehaviour
 {   
+       public static EntityManager instance;
+     private void Awake() {
+     if (instance !=null)
+     {
+      Debug.LogWarning("more than 1 entity manager at the time!");
+     } 
+     instance=this;
+    }
 public List<GameObject> entities= new List<GameObject>();
     // Start is called before the first frame update
     void Start()
