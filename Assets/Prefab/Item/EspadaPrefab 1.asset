@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: EspadaPrefab 1
   m_EditorClassIdentifier: 
   name: Espada
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: ff39044bbcdbbf44287be4d33f42c854, type: 3}
   isDefaultItem: 0
