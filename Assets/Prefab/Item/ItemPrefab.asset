@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1a1affdf4600bd4d9b519db83f61287, type: 3}
-  m_Name: Iheb
+  m_Name: ItemPrefab
   m_EditorClassIdentifier: 
-  name: Monica
-  icon: {fileID: 0}
+  name: Escudito
+  icon: {fileID: 21300000, guid: 9f498de8597d6d444b5115f634f801df, type: 3}
   isDefaultItem: 0
