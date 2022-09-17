@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a1affdf4600bd4d9b519db83f61287, type: 3}
   m_Name: Iheb
   m_EditorClassIdentifier: 
-  name: new item
+  name: Monica
   icon: {fileID: 0}
   isDefaultItem: 0
