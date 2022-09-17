@@ -24,18 +24,27 @@ public class CameraScript : MonoBehaviour
     try
     {
          hit.transform.GetComponent<Tiles>().targetedbymouse=true;
-    }
-    catch (System.NullReferenceException)
-    {
-        Debug.Log("se encontro un pj");
-         
-    }
-       
-        current = hit.transform.GetComponent<Tiles>();
+         current = hit.transform.GetComponent<Tiles>();
         if (prevcurrent!=current)
         {prevcurrent.targetedbymouse=false;
             
         }
+    }
+    catch (System.NullReferenceException)
+    {
+    //    Interactable inter = hit.collider.GetComponent<Interactable>();
+    // if (inter !=null)
+    // {
+    //     GameObject.Find("terreno").GetComponent<TurnManager>().entidadActual.GetComponent<EntityBehaviour>().setFocus(inter);
+    // }
+    //  if (Input.GetMouseButtonDown(0))
+    //    {
+    //     GameObject.Find("terreno").GetComponent<TurnManager>().entidadActual.GetComponent<EntityBehaviour>().removeFocus();
+
+    //    }
+       
+    }
+      
        }
 
 

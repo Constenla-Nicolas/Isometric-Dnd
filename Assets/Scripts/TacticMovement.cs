@@ -49,7 +49,7 @@ public class TacticMovement : MonoBehaviour
             {  
                  erasePrevious();
                 prevcurrent.Reset();
-                Debug.Log("difiere");
+                // Debug.Log("difiere");
                 
                
                 prevcurrent.actual=false;
@@ -101,7 +101,7 @@ public class TacticMovement : MonoBehaviour
             }
             
         }
-        Debug.Log(seleccionables.Count);
+        // Debug.Log(seleccionables.Count);
     }
 
     void computeAdjacencyList(Tiles t){
@@ -120,13 +120,12 @@ public class TacticMovement : MonoBehaviour
             
         }
        
-       Debug.Log("antes de borrar: "+seleccionables.Count);
+    //    Debug.Log("antes de borrar: "+seleccionables.Count);
         seleccionables.Clear();
        
     }
     protected void moveToTile(Tiles t){
-    // Vector3 pos = t.transform.position;
-    // pos.y = this.transform.position.y;
+    
     agent.SetDestination(t.transform.position);
     
     }
