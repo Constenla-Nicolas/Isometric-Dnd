@@ -22,7 +22,7 @@ public class TacticMovement : MonoBehaviour
 
     }
 
-    private void FixedUpdate() {
+    private void Update() {
         // if (EventSystem.current.IsPointerOverGameObject())
         // {
         //     return;
