@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.EventSystems;
 public class TacticMovement : MonoBehaviour
 {    public int distanciaMax =7;
      private NavMeshAgent agent;
@@ -22,7 +22,11 @@ public class TacticMovement : MonoBehaviour
 
     }
 
-    private void Update() {
+    private void FixedUpdate() {
+        // if (EventSystem.current.IsPointerOverGameObject())
+        // {
+        //     return;
+        // }
       if(actual){
             if(!moving){
         checkMouse();

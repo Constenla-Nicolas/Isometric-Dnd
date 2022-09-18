@@ -9,6 +9,6 @@ public class ScriptableItem : ScriptableObject
     public Sprite icon=null;
     public bool isDefaultItem=false;
     public virtual void Use(){
-        Debug.Log("usando"+this.name);
+        Debug.Log("usando "+this.name);
     }
 }
