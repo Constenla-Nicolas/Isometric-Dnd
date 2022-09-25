@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityBehaviour : MonoBehaviour
-{   public int iniciativa;
+{   public Sprite Icon;
+    public int iniciativa;
     public bool ismoving,actionAvailable,bonusActionAvailable;
     public Interactable focus;
     void Start()

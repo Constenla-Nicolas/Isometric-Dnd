@@ -22,4 +22,8 @@ public class InventorySlot : MonoBehaviour
             item.Use();
         }
     }
+      
+    public ScriptableItem getItem(){
+      return item;
+    }
 }
