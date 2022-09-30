@@ -11,7 +11,7 @@ public class Tiles : MonoBehaviour {
       public List<Tiles> adyacentes = new List<Tiles>();
     public int distancia;
 
-
+    int cont;
      void Start() {
       checkTile(Vector3.forward);
       checkTile(-Vector3.forward);
@@ -24,12 +24,16 @@ public class Tiles : MonoBehaviour {
           RaycastHit hit;
         if (Physics.Raycast(transform.position,direction,out hit,1f))
         {
-            Debug.Log("toque");
-            if (hit.transform.gameObject==null)
-            {
-                Debug.Log("ha, no hay nadie");
+           
+            if (hit.transform.gameObject!=null)
+            {    Debug.Log("toque a " +hit.transform.name);
+                cont++;
+                if (cont==4)
+                {
+                 changeMesh();   
+                }
             }
-            else{Debug.Log(hit.transform.gameObject.name);}
+           
             // if (hit.collider.gameObject.tag.Equals("Tile"))
             // {
 
@@ -59,6 +63,10 @@ public class Tiles : MonoBehaviour {
             Debug.Log("no toque nada en la direccion " +direction);
         }
     }
+
+    void changeMesh(){
+        
+    }
    public void findnegihbors(){
         adyacentes.Clear();
         Vector3 halfextents = new Vector3(.5f,.5f,.5f); //+new Vector3(1,0,1)
@@ -77,11 +85,7 @@ public class Tiles : MonoBehaviour {
      }
      catch (System.NullReferenceException)
      {
-
-
      }
-
-
     }
 
     public void Update() {
