@@ -26,46 +26,63 @@ public class Tiles : MonoBehaviour {
         {
            
             if (hit.transform.gameObject!=null)
-            {    Debug.Log("toque a " +hit.transform.name);
+            {    Debug.Log(hit.transform.name);
                 cont++;
                 if (cont==4)
                 {
                  changeMesh();   
                 }
             }
-           
-            // if (hit.collider.gameObject.tag.Equals("Tile"))
-            // {
-
-
-            //     current =hit.transform.gameObject.GetComponent<Tiles>();
-            //     current.actual=true;
-
-
-
-
-            // if (current!=prevcurrent)
-            // {
-            //      erasePrevious();
-            //     prevcurrent.Reset();
-            //     // Debug.Log("difiere");
-
-
-            //     prevcurrent.actual=false;
-            //     distancia= distanciaMax-1;
-            //      findSelectableTiles();
-            // }
-
-
-            // }
         }
         else{
             Debug.Log("no toque nada en la direccion " +direction);
         }
     }
 
+    private Mesh BuildQuad (float width, float height)
+	{
+		Mesh mesh = new Mesh ();
+		
+		// Setup vertices
+		Vector3[] newVertices = new Vector3[4];
+		float halfHeight = height * 0.5f;
+		float halfWidth = width * 0.5f;
+		newVertices [0] = new Vector3 (-halfWidth, -halfHeight, 0);
+		newVertices [1] = new Vector3 (-halfWidth, halfHeight, 0);
+		newVertices [2] = new Vector3 (halfWidth, -halfHeight, 0);
+		newVertices [3] = new Vector3 (halfWidth, halfHeight, 0);
+		
+		// Setup UVs
+		Vector2[] newUVs = new Vector2[newVertices.Length];
+		newUVs [0] = new Vector2 (0, 0);
+		newUVs [1] = new Vector2 (0, 1);
+		newUVs [2] = new Vector2 (1, 0);
+		newUVs [3] = new Vector2 (1, 1);
+		
+		// Setup triangles
+		int[] newTriangles = new int[] { 0, 1, 2, 3, 2, 1 };
+		
+		// Setup normals
+		Vector3[] newNormals = new Vector3[newVertices.Length];
+		for (int i = 0; i < newNormals.Length; i++) {
+			newNormals [i] = Vector3.forward;
+		}
+		
+		// Create quad
+		mesh.vertices = newVertices;
+		mesh.uv = newUVs;
+		mesh.triangles = newTriangles;
+		mesh.normals = newNormals;
+       
+		return mesh;
+	}
+
     void changeMesh(){
-        
+
+        Destroy(transform.GetComponent<MeshRenderer>());
+        transform.Find("QuadMesh").GetComponent<MeshRenderer>().enabled=true;
+        // transform.Rotate(90,0,0);
+                
     }
    public void findnegihbors(){
         adyacentes.Clear();
@@ -93,14 +110,17 @@ public class Tiles : MonoBehaviour {
         Debug.DrawRay(transform.position,-Vector3.forward,Color.green);
         Debug.DrawRay(transform.position,Vector3.right,Color.green);      
         Debug.DrawRay(transform.position,-Vector3.right,Color.green); 
-          if (targetedbymouse)
+
+        if (GetComponent<Renderer>()!=null)
+        {
+            if (targetedbymouse)
         {
             GetComponent<Renderer>().material.color = Color.magenta;
         }
         else if (actual)
         {
 
-            GetComponent<Renderer>().material.color= Color.green;
+           GetComponent<Renderer>().material.color= Color.green;
         }
         else if (seleccionable)
         {
@@ -109,8 +129,29 @@ public class Tiles : MonoBehaviour {
 
 
         else{
-            GetComponent<Renderer>().material.color=Color.white;
+           GetComponent<Renderer>().material.color=Color.white;
         }
+            
+        }
+         else{ 
+            if (targetedbymouse)
+        {
+           transform.Find("QuadMesh").GetComponent<Renderer>().material.color = Color.magenta;
+        }
+        else if (actual)
+        {
+
+         transform.Find("QuadMesh").GetComponent<Renderer>().material.color= Color.green;
+        }
+        else if (seleccionable)
+        {
+           transform.Find("QuadMesh").GetComponent<Renderer>().material.color= Color.red;
+        }
+
+
+        else{
+           transform.Find("QuadMesh").GetComponent<Renderer>().material.color=Color.white;
+        }}
 
     }
       public void Reset() {
