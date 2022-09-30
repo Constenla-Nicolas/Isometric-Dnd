@@ -10,28 +10,6 @@ public class Tiles : MonoBehaviour {
       public bool seleccionable,target,actual,visitado,caminable=true,targetedbymouse;
       public List<Tiles> adyacentes = new List<Tiles>();
     public int distancia;
-<<<<<<< Updated upstream
-     
-  static  List<GameObject> tiles = new List<GameObject>();
-  static List<GameObject> terreno = new List<GameObject>();
-  static List<List<GameObject>> matriz = new List<List<GameObject>>();
-    [MenuItem("Tools/Instanciar matriz")]
-     static void Start() {
-     GameObject b = GameObject.FindGameObjectWithTag("base");
-        for (int j = 0; j < cantidad; j++)
-        {
-            tiles.Clear();
-             for (int i = 0; i < cantidad; i++)
-             {
-            tiles.Add(Instantiate(b,b.transform.position+new Vector3(i,0,j),b.transform.rotation)as GameObject);
-            tiles[i].name="Cubo"+(j)+","+(i);
-            tiles[i].tag="Tile";
-            tiles[i].isStatic= true;
-            terreno.Add(tiles[i]);
-             }
-             matriz.Add(tiles);
-            
-=======
 
     int cont;
      void Start() {
@@ -85,13 +63,12 @@ public class Tiles : MonoBehaviour {
         }
         else{
             Debug.Log("no toque nada en la direccion " +direction);
->>>>>>> Stashed changes
         }
         // foreach (GameObject t in terreno)
         // {   
         //     t.AddComponent<Tiles>();
         // }
-       Destroy(b);
+    //    Destroy(b);
      
     }
     private Mesh BuildQuad (float width, float height)
@@ -156,27 +133,6 @@ public class Tiles : MonoBehaviour {
     }
  
     public void Update() {
-<<<<<<< Updated upstream
-          if (targetedbymouse)
-        {
-            GetComponent<Renderer>().material.color = Color.magenta;
-        }
-        else if (actual)
-        {    
-        
-            GetComponent<Renderer>().material.color= Color.green;
-        }
-        else if (seleccionable)
-        {  
-            GetComponent<Renderer>().material.color= Color.red;
-        }
-        
-         
-        else{
-            GetComponent<Renderer>().material.color=Color.white;
-        }
-        
-=======
         Debug.DrawRay(transform.position,Vector3.forward,Color.green);
         Debug.DrawRay(transform.position,-Vector3.forward,Color.green);
         Debug.DrawRay(transform.position,Vector3.right,Color.green);      
@@ -200,7 +156,6 @@ public class Tiles : MonoBehaviour {
         //     GetComponent<Renderer>().material.color=Color.white;
         // }
 
->>>>>>> Stashed changes
     }
       public void Reset() {
     seleccionable=false;
