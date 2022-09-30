@@ -88,6 +88,7 @@ MonoBehaviour:
   bonusActionAvailable: 0
   focus: {fileID: 0}
   UnarmedStrike: {fileID: 11400000, guid: a3351e76c0b66a149b24d3e2b306ec96, type: 2}
+  focusCollider: {fileID: 0}
 --- !u!114 &534305185802540672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5347b5f3e614847974568f234b38ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanciaMax: 6
+  distanciaMax: 7
   Seleccionando: 0
   actual: 0
   distancia: 0
