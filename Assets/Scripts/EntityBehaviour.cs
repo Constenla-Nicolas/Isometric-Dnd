@@ -7,10 +7,13 @@ public class EntityBehaviour : MonoBehaviour
     public int iniciativa;
     public bool ismoving,actionAvailable,bonusActionAvailable;
     public Interactable focus;
+    public Equipment UnarmedStrike;
+
+    [SerializeField] private Collider focusCollider;
     void Start()
-    {actionAvailable=true;
-     bonusActionAvailable=true;
-         
+    {
+     actionAvailable=true;
+     bonusActionAvailable=true;    
     }
 
     // Update is called once per frame
@@ -20,29 +23,40 @@ public class EntityBehaviour : MonoBehaviour
     }
     public void setFocus(Interactable newFocus){
         if (focus!=newFocus)
-        { Debug.Log("difiere del anterior ="+focus +", "+newFocus);
+        { 
             if (focus!=null)
-            { Debug.Log(focus + " no es nulo");
+            {  
                  focus.onDefocus();
             }
              focus=newFocus;
             
         }
         newFocus.OnFocus(transform);
+        CameraScript.instance.desactivarBoton();
     }
     public void removeFocus(){
+        if (focus!=null)
+        {
         focus.onDefocus();
         Debug.Log(focus.name);
         focus=null;
-        Debug.Log(focus);
+         
+        }
+       
     }
     private void OnTriggerEnter(Collider other) {
-      
-        setFocus(other.GetComponent<Interactable>());
+         CameraScript.instance.activarBoton();
+        // setFocus(other.GetComponent<Interactable>()); 
+        focusCollider=other;
           Debug.Log(other.name +", "+other.GetComponent<Interactable>().isFocus+", "+other.GetComponent<Interactable>().hasInteracted);
     }
     private void OnTriggerExit(Collider other) {
-        removeFocus();
+        CameraScript.instance.desactivarBoton();
+        
+         removeFocus();
          
+    }
+    public Collider getFocus(){
+        return focusCollider;
     }
 }

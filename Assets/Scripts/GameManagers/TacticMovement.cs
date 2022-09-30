@@ -6,10 +6,10 @@ using UnityEngine.EventSystems;
 public class TacticMovement : MonoBehaviour
 {    public int distanciaMax =7;
      private NavMeshAgent agent;
-    public bool moving=false,actual;
+    public bool Seleccionando=false,actual;
     public int distancia;
     Tiles current,prevcurrent,targetedbymouse;
-    public GameObject p;
+  
      private Tiles aux;
     Stack<Tiles>path=new Stack<Tiles>();
      protected List<  Tiles> seleccionables ;
@@ -23,12 +23,9 @@ public class TacticMovement : MonoBehaviour
     }
 
     private void Update() {
-        // if (EventSystem.current.IsPointerOverGameObject())
-        // {
-        //     return;
-        // }
+       
       if(actual){
-            if(!moving){
+            if(!Seleccionando){
         checkMouse();
      }
     

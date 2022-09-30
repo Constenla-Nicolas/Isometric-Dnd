@@ -45,8 +45,8 @@ public List<GameObject> entities= new List<GameObject>();
         }
         entities[0].GetComponent<TacticMovement>().actual=true;
     }
-    void entityMovement(){
-    
+    public void grabItem(){
+      TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().setFocus(TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().getFocus().GetComponent<Interactable>());
     }
     public List<GameObject> getPlayerList(){
 

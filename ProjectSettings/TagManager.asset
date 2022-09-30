@@ -8,6 +8,7 @@ TagManager:
   - base
   - Entity
   - Item
+  - boton
   layers:
   - Default
   - TransparentFX

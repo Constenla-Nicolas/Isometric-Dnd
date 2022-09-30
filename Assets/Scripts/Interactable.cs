@@ -6,8 +6,9 @@ public class Interactable : MonoBehaviour
 {
     // Start is called before the first frame update
     public float radius=.4f;
+    [SerializeField] int currenthealth;
    public bool isFocus=false,hasInteracted=false;
-    Transform player;
+    [SerializeField]Transform player;
     public void OnFocus(Transform playerTransform) {
         isFocus=true;
         player = playerTransform;
@@ -42,5 +43,8 @@ public class Interactable : MonoBehaviour
             }
              
         }
+    }
+    public void takeDmg(int dmg){
+        currenthealth-=dmg;
     }
 }

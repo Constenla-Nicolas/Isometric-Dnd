@@ -39,6 +39,8 @@ public Equipment[] currentEquipment;
         auxMesh.bones=targetMesh.bones;
         auxMesh.rootBone=targetMesh.rootBone;
         currentMeshes[slotIndex]= auxMesh;
+        
+      
     }
     public void Unequip(int slotIndex){
         if (currentEquipment[slotIndex]!=null)

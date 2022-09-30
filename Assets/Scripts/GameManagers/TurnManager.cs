@@ -51,12 +51,12 @@ public class TurnManager : MonoBehaviour{
           turnQ.Enqueue(item);
         }
       }
-      Debug.Log("con actionavailable y bonus action en "+entidadActual.GetComponent<EntityBehaviour>().actionAvailable +", "+ entidadActual.GetComponent<EntityBehaviour>().bonusActionAvailable);
+      // Debug.Log("con actionavailable y bonus action en "+entidadActual.GetComponent<EntityBehaviour>().actionAvailable +", "+ entidadActual.GetComponent<EntityBehaviour>().bonusActionAvailable);
       entidadActual.GetComponent<TacticMovement>().actual=false;
       entidadActual.GetComponent<TacticMovement>().erasePrevious();
       entidadActual = turnQ.Dequeue();
       Debug.Log("y ahora la actual es"+entidadActual.name);
-      Debug.Log("con actionavailable y bonus action en "+entidadActual.GetComponent<EntityBehaviour>().actionAvailable +", "+ entidadActual.GetComponent<EntityBehaviour>().bonusActionAvailable);
+      // Debug.Log("con actionavailable y bonus action en "+entidadActual.GetComponent<EntityBehaviour>().actionAvailable +", "+ entidadActual.GetComponent<EntityBehaviour>().bonusActionAvailable);
       
       entidadActual.GetComponent<TacticMovement>().actual=true;
       entidadActual.GetComponent<TacticMovement>().erasePrevious();

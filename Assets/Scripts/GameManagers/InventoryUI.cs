@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class InventoryUI : MonoBehaviour
 {   
      public static InventoryUI instance;
@@ -19,9 +19,10 @@ public class InventoryUI : MonoBehaviour
      List<Inventory> inventories = new List<Inventory>();
      InventorySlot[] slots;
      InventorySlot[] atackSlots;
+     InventorySlot selec;
     void Start()
     {   atackSlots= attackParentReference.GetComponentsInChildren<InventorySlot>();
-        Debug.Log(atackSlots.Length);
+      
         slots=parentReference.GetComponentsInChildren<InventorySlot>();
         for (int i = 0; i < EntityManager.instance.entities.Count; i++)
         {
@@ -35,44 +36,36 @@ public class InventoryUI : MonoBehaviour
             atackSlots[i].RemoveItem();
         }
         UpdateUI();
-      
+        atackSlots[0].AddItem(TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().UnarmedStrike);
+        atackSlots[0].text.text = atackSlots[0].getItem().name;
     }
 
     // Update is called once per frame
-    void Update()
-    {    
-       
-    }
-    int aux;
-    void UpdateAttackUI(){
-        Debug.Log("Ataques Actualizados");
     
+    int aux=1;
+   public void UpdateAttackUI(){
+        
+    for (int i = 1; i < atackSlots.Length; i++)
+    {
+        atackSlots[i].RemoveItem();
+        atackSlots[i].text.text="";
+    }
        
 
         for (int i = 0; i < atackSlots.Length; i++)
         {  
             if (i< TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment.Length)
             {
-
-                try
-                {
-                     atackSlots[aux].AddItem(TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[i]);
-                     aux=+1;
-                Debug.Log("mostrar arma");
-                }
-                catch (System.Exception)
-                {
-                    
-                  
-                }
-               
-            }
-            else
+                if (TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[i]!=null&&TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[i].dmgDice!=0)
             {
-                atackSlots[i].RemoveItem();
+                atackSlots[aux].AddItem(TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[i]);
+                atackSlots[aux].text.text=atackSlots[aux].getItem().name;
             }
+            }
+             
+       
         }
-        
+         Debug.Log("Ataques Actualizados");
     }
     void UpdateUI(){
         Debug.Log("UI actualizada");
@@ -88,12 +81,20 @@ public class InventoryUI : MonoBehaviour
                 slots[i].RemoveItem();
             }
         }
-        UpdateAttackUI();
+        
+    }
+    public void guardarArma(InventorySlot selec){
+        this.selec=selec;
+        }
+    public Equipment getArmaGuardada(){
+        
+        return (Equipment)selec.getItem();
     }
     public void changeEntity(){
         
         Debug.Log("para el ui, la entida actual es " + TurnManager.instance.entidadActual);
         UpdateUI();
+        UpdateAttackUI();
     }
    
 }
