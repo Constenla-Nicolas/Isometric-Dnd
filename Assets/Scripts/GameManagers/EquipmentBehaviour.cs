@@ -4,7 +4,7 @@ using UnityEngine;
  
 
 
-public class EquipmentManager : MonoBehaviour {
+public class EquipmentBehaviour : MonoBehaviour {
    
   
 public Equipment[] currentEquipment;

@@ -17,9 +17,12 @@ public List<GameObject> entities= new List<GameObject>();
     void Start()
     {   entities.AddRange(GameObject.FindGameObjectsWithTag("Entity"));
          
-         entities[0].GetComponent<EntityBehaviour>().iniciativa=15;
-         entities[1].GetComponent<EntityBehaviour>().iniciativa=12;
-         entities[2].GetComponent<EntityBehaviour>().iniciativa=8;
+         foreach (var item in entities)
+         {
+            item.GetComponent<EntityBehaviour>().iniciativa= UnityEngine.Random.Range(5,25);
+            Debug.Log("iniciativas: "+item.GetComponent<EntityBehaviour>().iniciativa);
+         }
+         
 
         ordenarPorIniciativa();
     }

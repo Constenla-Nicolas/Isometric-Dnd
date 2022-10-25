@@ -40,7 +40,7 @@ public class TurnManager : MonoBehaviour{
       if (!entidadActual.GetComponent<EntityBehaviour>().ismoving&&!entidadActual.GetComponent<EntityBehaviour>().actionAvailable&&!entidadActual.GetComponent<EntityBehaviour>().bonusActionAvailable)
     { Debug.Log("la actual es "+entidadActual.name);
       if (turnQ.Count==0)
-      {
+      {entidadActual.GetComponent<TacticMovement>().erasePrevious();
         for (int i = 0; i < playerlist.Count; i++)
         { playerlist[i].GetComponent<EntityBehaviour>().actionAvailable=true;
        playerlist[i].GetComponent<EntityBehaviour>().bonusActionAvailable=true;
@@ -50,8 +50,9 @@ public class TurnManager : MonoBehaviour{
         {
           turnQ.Enqueue(item);
         }
+        entidadActual.GetComponent<TacticMovement>().findSelectableTiles();
       }
-      // Debug.Log("con actionavailable y bonus action en "+entidadActual.GetComponent<EntityBehaviour>().actionAvailable +", "+ entidadActual.GetComponent<EntityBehaviour>().bonusActionAvailable);
+      Debug.Log("con actionavailable y bonus action en "+entidadActual.GetComponent<EntityBehaviour>().actionAvailable +", "+ entidadActual.GetComponent<EntityBehaviour>().bonusActionAvailable);
       entidadActual.GetComponent<TacticMovement>().actual=false;
       entidadActual.GetComponent<TacticMovement>().erasePrevious();
       entidadActual = turnQ.Dequeue();

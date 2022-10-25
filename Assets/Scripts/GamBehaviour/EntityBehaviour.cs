@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class EntityBehaviour : MonoBehaviour
 {   public Sprite Icon;
-    public int iniciativa;
+    public int iniciativa,dropExp,maxHealth,currentHealth;
     public bool ismoving,actionAvailable,bonusActionAvailable;
     public Interactable focus;
     public Equipment UnarmedStrike;
-
+    // public TacticMovement tm;
     [SerializeField] private Collider focusCollider;
     void Start()
     {
+        // tm = new TacticMovement();
+    UnarmedStrike = new Equipment{
+        armorClass=0,dmgDice=0,range=5, };
      actionAvailable=true;
      bonusActionAvailable=true;    
     }
-
+    
     // Update is called once per frame
     void Update()
-    {
+    { 
         
     }
     public void setFocus(Interactable newFocus){
@@ -52,11 +55,14 @@ public class EntityBehaviour : MonoBehaviour
     }
     private void OnTriggerExit(Collider other) {
         CameraScript.instance.desactivarBoton();
-        
+        focusCollider=null;
          removeFocus();
          
     }
     public Collider getFocus(){
         return focusCollider;
+    }
+    public int getCurrentHealth(){
+        return currentHealth;
     }
 }

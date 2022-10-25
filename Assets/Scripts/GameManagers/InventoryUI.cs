@@ -21,8 +21,8 @@ public class InventoryUI : MonoBehaviour
      InventorySlot[] atackSlots;
      InventorySlot selec;
     void Start()
-    {   atackSlots= attackParentReference.GetComponentsInChildren<InventorySlot>();
-      
+    { 
+        atackSlots= attackParentReference.GetComponentsInChildren<InventorySlot>();
         slots=parentReference.GetComponentsInChildren<InventorySlot>();
         for (int i = 0; i < EntityManager.instance.entities.Count; i++)
         {
@@ -54,11 +54,11 @@ public class InventoryUI : MonoBehaviour
 
         for (int i = 0; i < atackSlots.Length; i++)
         {  
-            if (i< TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment.Length)
+            if (i< TurnManager.instance.entidadActual.GetComponent<EquipmentBehaviour>().currentEquipment.Length)
             {
-                if (TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[i]!=null&&TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[i].dmgDice!=0)
+                if (TurnManager.instance.entidadActual.GetComponent<EquipmentBehaviour>().currentEquipment[i]!=null&&TurnManager.instance.entidadActual.GetComponent<EquipmentBehaviour>().currentEquipment[i].dmgDice!=0)
             {
-                atackSlots[aux].AddItem(TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[i]);
+                atackSlots[aux].AddItem(TurnManager.instance.entidadActual.GetComponent<EquipmentBehaviour>().currentEquipment[i]);
                 atackSlots[aux].text.text=atackSlots[aux].getItem().name;
             }
             }

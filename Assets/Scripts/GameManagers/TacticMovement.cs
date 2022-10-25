@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 public class TacticMovement : MonoBehaviour
-{    public int distanciaMax =7;
+{     
      private NavMeshAgent agent;
     public bool Seleccionando=false,actual;
     public int distancia;
@@ -18,12 +18,12 @@ public class TacticMovement : MonoBehaviour
        agent=GetComponent<NavMeshAgent>();
          current= new Tiles();
          seleccionables = new List<Tiles>();
-         
+         Debug.Log(seleccionables + " aaaaaaaaaaaaaa");
 
     }
 
     private void Update() {
-       
+      
       if(actual){
             if(!Seleccionando){
         checkMouse();
@@ -54,7 +54,7 @@ public class TacticMovement : MonoBehaviour
                 
                
                 prevcurrent.actual=false;
-                distancia= distanciaMax-1;
+                distancia= 6;
                  findSelectableTiles();
             }
            
@@ -100,6 +100,10 @@ public class TacticMovement : MonoBehaviour
                     
                 }
             }
+    //         else  if (!agent.isStopped)
+    //    {
+    //         agent.Stop();
+    //    }
             
         }
         // Debug.Log(seleccionables.Count);
@@ -163,8 +167,6 @@ public class TacticMovement : MonoBehaviour
         }
     }
     
-    public NavMeshAgent GetAgent(){
-        return agent;
-    }
+ 
 
 }

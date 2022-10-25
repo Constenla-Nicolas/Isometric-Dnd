@@ -26,7 +26,8 @@ public class Tiles : MonoBehaviour {
         {
            
             if (hit.transform.gameObject!=null)
-            {    Debug.Log(hit.transform.name);
+            {   
+                
                 cont++;
                 if (cont==4)
                 {
@@ -35,7 +36,7 @@ public class Tiles : MonoBehaviour {
             }
         }
         else{
-            Debug.Log("no toque nada en la direccion " +direction);
+            // Debug.Log("no toque nada en la direccion " +direction);
         }
     }
 

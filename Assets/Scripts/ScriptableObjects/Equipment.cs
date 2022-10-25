@@ -14,7 +14,7 @@ public class Equipment : ScriptableItem
     public override void Use()
     {
         base.Use();
-        TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().Equip(this);
+        TurnManager.instance.entidadActual.GetComponent<EquipmentBehaviour>().Equip(this);
         removeFromInventory();
     }
   

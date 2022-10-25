@@ -24,7 +24,7 @@ double checkDistance(){
         TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().setFocus(SelectedEntity.GetComponent<Interactable>());
         Vector2 targetVector2 = new Vector2(SelectedEntity.transform.position.x, SelectedEntity.transform.position.z);
         Vector2 entityVector2 = new Vector2(TurnManager.instance.entidadActual.transform.position.x, TurnManager.instance.entidadActual.transform.position.z);
-        //convierte la translacion interna del juego en distancia de dnd en pies
+        //convierte la trfanslacion interna del juego en distancia de dnd en pies
        var resultado = Math.Sqrt((Math.Pow(entityVector2.x - targetVector2.x, 2) + Math.Pow(entityVector2.y - targetVector2.y, 2)));
        resultado = Math.Round(resultado);
         resultado = Math.Abs(resultado) *5;
@@ -33,18 +33,18 @@ double checkDistance(){
 }
 void atacar(){
   
-  if (SelectedEntity!=null)
-  { 
-    if (checkHands().range>=checkDistance())
-    {
-    attackRoll();
-    //reproducir animacion de ataque
-    }
-    else
-    {
-    Debug.Log("te quedaste corto");
-    }
-  }
+  // if (SelectedEntity!=null)
+  // { 
+  //   if (checkHands().range>=checkDistance())
+  //   {
+  //   attackRoll();
+  //   //reproducir animacion de ataque
+  //   }
+  //   else
+  //   {
+  //   Debug.Log("te quedaste corto");
+  //   }
+  // }
   
 }
 
@@ -53,11 +53,12 @@ void attackRoll(){
     Debug.Log("tirada de ataque:" +AttackDice);
       try
     {
-      if (AttackDice>CameraScript.instance.currentSelected.GetComponent<EquipmentManager>().currentEquipment[1].armorClass)
+      if (AttackDice>CameraScript.instance.currentSelected.GetComponent<EquipmentBehaviour>().currentEquipment[1].armorClass)
     {
       Debug.Log("es un hit");
       TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().focus.takeDmg(dmgRoll());
-     
+      TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().actionAvailable=false;
+      reiniciarHUD();
     }
     }
     catch (System.Exception)
@@ -66,17 +67,27 @@ void attackRoll(){
       {
         Debug.Log("no tiene armor, es un hit");
         TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().focus.takeDmg(dmgRoll());
-        
+        TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().actionAvailable=false;
+        reiniciarHUD();
       }
       
     }
+    // if (TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().getFocus().GetComponent<EntityBehaviour>().getCurrentHealth()>=0){
+    // TurnManager.instance.entidadActual.GetComponent<ClassManager>().exp+=  TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().getFocus().GetComponent<EntityBehaviour>().dropExp;
+    // }
+
     TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().removeFocus();
+   
 }
 
-int dmgRoll(){
-  return UnityEngine.Random.Range(1,checkHands().dmgDice);
+int dmgRoll(){                  // checkHands().dmgDice
+  return UnityEngine.Random.Range(1,0);
 }
  
+
+ public void reiniciarHUD(){
+  
+ }
 public  void SeleccionarEnemigo(){
   Debug.Log("no deberia moverme");
     TurnManager.instance.entidadActual.GetComponent<TacticMovement>().Seleccionando=true;
@@ -102,19 +113,19 @@ public void noMoreSelec(){
   TurnManager.instance.entidadActual.GetComponent<TacticMovement>().Seleccionando=false;
 }
 
-Equipment checkHands(){
-  if (TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[3]!=null)
-  {
-    return TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[3];
+// Equipment checkHands(){
+//   if (TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[3]!=null)
+//   {
+//     return TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[3];
     
-  }
-  else if (TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[4]!=null)
-  {
-      return TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[4];
-  }
-  else
-  {
-    return TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().UnarmedStrike;
-  }
-}
+//   }
+//   else if (TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[4]!=null)
+//   {
+//       return TurnManager.instance.entidadActual.GetComponent<EquipmentManager>().currentEquipment[4];
+//   }
+//   else
+//   {  
+//     return TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().UnarmedStrike;
+//   }
+// }
 }
