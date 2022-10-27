@@ -17,9 +17,7 @@ public class CombatManager : MonoBehaviour
      }
      instance=this;
     }
-    private void Start() {
-      
-    }
+ 
 double checkDistance(){
         TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().setFocus(SelectedEntity.GetComponent<Interactable>());
         Vector2 targetVector2 = new Vector2(SelectedEntity.transform.position.x, SelectedEntity.transform.position.z);
@@ -33,65 +31,60 @@ double checkDistance(){
 }
 void atacar(){
   
-  // if (SelectedEntity!=null)
-  // { 
-  //   if (checkHands().range>=checkDistance())
-  //   {
-  //   attackRoll();
-  //   //reproducir animacion de ataque
-  //   }
-  //   else
-  //   {
-  //   Debug.Log("te quedaste corto");
-  //   }
-  // }
-  
-}
-
-void attackRoll(){
-    var AttackDice = UnityEngine.Random.Range(1,20);
-    Debug.Log("tirada de ataque:" +AttackDice);
-      try
-    {
-      if (AttackDice>CameraScript.instance.currentSelected.GetComponent<EquipmentBehaviour>().currentEquipment[1].armorClass)
-    {
-      Debug.Log("es un hit");
-      TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().focus.takeDmg(dmgRoll());
-      TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().actionAvailable=false;
-      reiniciarHUD();
-    }
-    }
-    catch (System.Exception)
-    {
-      if (AttackDice>10)
-      {
-        Debug.Log("no tiene armor, es un hit");
-        TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().focus.takeDmg(dmgRoll());
-        TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().actionAvailable=false;
-        reiniciarHUD();
-      }
-      
-    }
-    // if (TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().getFocus().GetComponent<EntityBehaviour>().getCurrentHealth()>=0){
-    // TurnManager.instance.entidadActual.GetComponent<ClassManager>().exp+=  TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().getFocus().GetComponent<EntityBehaviour>().dropExp;
-    // }
-
-    TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().removeFocus();
-   
-}
-
-int dmgRoll(){                  // checkHands().dmgDice
-  return UnityEngine.Random.Range(1,0);
-}
  
-
- public void reiniciarHUD(){
+    if (Selecteditem.range>=checkDistance())
+    {
+    // attackRoll();
+    //reproducir animacion de ataque
+    }
+    else
+    {
+    Debug.Log("te quedaste corto");
+    }
   
- }
-public  void SeleccionarEnemigo(){
+  
+}
+
+// void attackRoll(){
+//     var AttackDice = Dice.rollD20();
+//     Debug.Log("tirada de ataque:" +AttackDice);
+//       try
+//     {
+//       if (AttackDice>CameraScript.instance.currentSelected.GetComponent<EquipmentBehaviour>().currentEquipment[1].armorClass)
+//     {
+//       Debug.Log("es un hit");
+//       TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().focus.takeDmg(dmgRoll());
+//       TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().actionAvailable=false;
+//       // reiniciarHUD();
+//     }
+//     }
+//     catch (System.Exception)
+//     {
+//       if (AttackDice>10)
+//       {
+//         Debug.Log("no tiene armor, es un hit");
+//         TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().focus.takeDmg(dmgRoll());
+//         TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().actionAvailable=false;
+//         reiniciarHUD();
+//       }
+      
+//     }
+//     // if (TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().getFocus().GetComponent<EntityBehaviour>().getCurrentHealth()>=0){
+//     // TurnManager.instance.entidadActual.GetComponent<ClassManager>().exp+=  TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().getFocus().GetComponent<EntityBehaviour>().dropExp;
+//     // }
+
+//     TurnManager.instance.entidadActual.GetComponent<EntityBehaviour>().removeFocus();
+   
+// }
+
+Equipment Selecteditem;
+ 
+public  void SeleccionarEnemigo(GameObject AttackSlot){
   Debug.Log("no deberia moverme");
     TurnManager.instance.entidadActual.GetComponent<TacticMovement>().Seleccionando=true;
-    // Selecteditem=item;
+    
+    Selecteditem=(Equipment)AttackSlot.GetComponent<InventorySlot>().getItem();
+    Debug.Log("rango: "+Selecteditem.range);
   }
 private void Update() {
   if (CameraScript.instance.currentGO!=null)

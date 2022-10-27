@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class CameraScript : MonoBehaviour
 { Camera cam;
   Tiles current, prevcurrent;
@@ -9,7 +9,7 @@ public class CameraScript : MonoBehaviour
   public EntityBehaviour currentGO;
   public GameObject currentSelected;
     public GameObject button;
- 
+    
     void Start()
     {
         cam = Camera.main;
@@ -46,10 +46,11 @@ public class CameraScript : MonoBehaviour
         {
           
           currentGO= hit.transform.gameObject.GetComponent<EntityBehaviour>();
+          
           if (Input.GetMouseButtonUp(0))
           {
             currentSelected=hit.transform.gameObject;
-           
+     
           }   
     
         }

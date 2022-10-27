@@ -18,7 +18,7 @@ public class TacticMovement : MonoBehaviour
        agent=GetComponent<NavMeshAgent>();
          current= new Tiles();
          seleccionables = new List<Tiles>();
-         Debug.Log(seleccionables + " aaaaaaaaaaaaaa");
+     
 
     }
 
