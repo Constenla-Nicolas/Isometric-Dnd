@@ -23,8 +23,22 @@ And maybe a character creator like in Fire Emblem Awakening
 
 As said, there's a LOT of work
 Current state:
-![Opera Snapshot_2022-08-18_205419_trello com](https://user-images.githubusercontent.com/78242717/185514549-ccb4adb6-3864-4fe4-bdc9-32b54a3dbf9f.png)
+![Opera Snapshot_2022-11-01_145923_trello com](https://user-images.githubusercontent.com/78242717/199304900-38279bf6-acc2-408b-a736-f93ab2ee5118.png)
+
+Character creator (stats section)
+![1](https://user-images.githubusercontent.com/78242717/199305899-46f01134-7e19-426b-84de-672444543005.png)
+
+3d model made in blender, with sword,shield, and cloth placeholder for customization, already baked, rigged and animated!
+![Untitled](https://user-images.githubusercontent.com/78242717/199306053-1202f357-0ced-436a-b4ad-5f2130e9fd58.png)
 
 
-![Untitled](https://user-images.githubusercontent.com/78242717/185513224-dd35f537-9edc-4037-a63e-796a557b3cfc.png)
+
+
+
+
+current in-game image
+![2](https://user-images.githubusercontent.com/78242717/199305889-afaaa346-5de1-4b18-ab8d-031ffcfd175c.png)
+
+
+
 
