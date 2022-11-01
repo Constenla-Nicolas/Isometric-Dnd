@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FeatureHolder : MonoBehaviour
-{   public List<ScriptableFeature> features = new List<ScriptableFeature>();
-    // public ScriptableFeature feature;
+{   public List<IFeature> features = new List<IFeature>();
+    
     enum abilityState
     {   ready,
         active,
@@ -13,14 +13,15 @@ public class FeatureHolder : MonoBehaviour
     abilityState state= abilityState.ready;
     // Start is called before the first frame update
     private void Start() {
-    features.AddRange(gameObject.GetComponent<ClassBehaviour>().getClass().loadClassFeatures()); 
+    features.AddRange(new Fighter().LoadLvl1()); 
+     
     }
     public KeyCode key;
     // Update is called once per frame
     void Update()
     {  if (Input.GetKeyDown(key))
     {
-        // feature.run(gameObject);
+        features[0].run(gameObject);
     }
         
     }

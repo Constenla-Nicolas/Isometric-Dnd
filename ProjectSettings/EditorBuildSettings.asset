@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/escenas/Mainmenu.unity
     guid: 5251eb6be68510044aa2cce8466f2376
   - enabled: 1
+    path: Assets/escenas/CharCreationMenu.unity
+    guid: a88eee6234d97b249b56d8e9e2889be6
+  - enabled: 1
     path: Assets/escenas/main.unity
     guid: d09d39a10569e8f418660544c341925a
   m_configObjects: {}

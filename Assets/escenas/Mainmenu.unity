@@ -603,7 +603,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 522378125}
         m_TargetAssemblyTypeName: MainmenuScript, Assembly-CSharp
-        m_MethodName: playGame
+        m_MethodName: nextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

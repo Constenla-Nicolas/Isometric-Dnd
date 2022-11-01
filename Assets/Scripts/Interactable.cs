@@ -45,7 +45,7 @@ public class Interactable : MonoBehaviour
         }
     }
     public void takeDmg(int dmg){
-        Itself.GetComponent<EntityBehaviour>().currentHealth-=dmg;
+        Itself.GetComponent<stats>().currentHealth-=dmg;
         
     }
  

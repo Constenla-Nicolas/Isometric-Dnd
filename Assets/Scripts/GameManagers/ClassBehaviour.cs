@@ -6,8 +6,8 @@ public class ClassBehaviour : MonoBehaviour
 {    public int exp;
     public int currentLvl=1;
  
-   public ScriptableClass MyClass ;
+ [SerializeField]  public IJob MyClass ;
 
-    public  ScriptableClass getClass()
+    public  IJob getClass()
     {return MyClass;}
 }
